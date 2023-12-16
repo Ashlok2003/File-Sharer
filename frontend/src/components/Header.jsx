@@ -13,7 +13,7 @@ const Header = () => {
         <Navbar expand="lg" bg="body-tertiary shadow sticky-top" variant="light">
             <div className="container">
 
-                <Navbar.Brand className="d-flex align-items-center jsutify-content-between" href="#" onClick={() => navigate('/home')}>
+                <Navbar.Brand className="d-flex align-items-center jsutify-content-between" href="#" onClick={() => navigate('/')}>
                     <div className="col-sm-11">
                         <img
                             src="https://i.ibb.co/239PXCF/file-sharex-high-resolution-logo-transparent.png"
