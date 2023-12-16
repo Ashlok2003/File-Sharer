@@ -5,6 +5,8 @@ const connectDB = require('./config/Database');
 const app = express();
 const path = require('path');
 const cors = require('cors');
+const cron = require('node-cron');
+const fs = require('fs');
 
 /*
 ! setting our allmighty handlebar templat engine :) */
@@ -38,4 +40,37 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Listening to Port: ${PORT}`)
 });
+
+/* Adding the scheduler to delete the files in every 12 hours interval */
+
+cron.schedule('0 */12 * * *', () => {
+    console.log('Scheduler Called !')
+    const directory = path.join(__dirname, 'Uploads/');
+    fs.readdir(directory, (err, files) => {
+        if (err) {
+            console.log("Error Reading Directory !", err);
+            return;
+        }
+
+        if (files.length > 0) {
+            files.forEach(file => {
+                fs.unlink(path.join(directory, file), err => {
+                    if (err) {
+                        console.log('Error Deleting files !', err);
+                    } else {
+                        console.log(`File ${file} deleted successfully.`);
+                    }
+                });
+            });
+        } else {
+            console.log("No files to delete !");
+        }
+    });
+}, {
+    scheduled: true,
+    timezone: 'Asia/Kolkata'
+});
+
+
+
 
