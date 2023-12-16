@@ -21,7 +21,7 @@ const FileUploader = ({ setFileDetails }) => {
         formData.append('myfile', fileToUpload);
 
         try {
-            const response = await axios.post("http://localhost:3000/api/files", formData, {
+            const response = await axios.post("https://file-sharer-server.onrender.com/api/files", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -39,7 +39,7 @@ const FileUploader = ({ setFileDetails }) => {
         const fetchFileDetails = async () => {
             if (key) {
                 try {
-                    const response = await axios.post(`http://localhost:3000/files/${key}`);
+                    const response = await axios.post(`https://file-sharer-server.onrender.com/files/${key}`);
                     setProgress(false);
                     setFileDetails(response.data);
                     

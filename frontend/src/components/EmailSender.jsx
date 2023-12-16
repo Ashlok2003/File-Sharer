@@ -18,7 +18,7 @@ function EmailSender({ emailKey, notification }) {
 
     try {
       /* Since the error handling has been done on server side */
-      const response = await axios.post('http://localhost:3000/api/files/send', mailCredentials, {
+      const response = await axios.post('https://file-sharer-server.onrender.com/api/files/send', mailCredentials, {
         headers: {
           'Content-Type': 'application/json',
         }
