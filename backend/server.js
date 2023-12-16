@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(cors({
     origin: '*',
     methods: ['GET', 'POST'],
+    credentials: true,
 }));
 const PORT = process.env.PORT || 3000;
 
@@ -31,7 +32,7 @@ app.use('/files', require('./Routes/show'));
 app.use('/files/download', require('./Routes/download'));
 
 app.get('/', (req, res) => {
-    res.send("Hello");
+    res.json("Hello");
 });
 
 app.listen(PORT, () => {
