@@ -41,11 +41,13 @@ app.listen(PORT, () => {
     console.log(`Listening to Port: ${PORT}`)
 });
 
-/* Adding the scheduler to delete the files in every 12 hours interval */
+/* 
+! Adding the scheduler to delete the files in every 12 hours interval */
 
 cron.schedule('0 */12 * * *', () => {
     console.log('Scheduler Called !')
     const directory = path.join(__dirname, 'Uploads/');
+    
     fs.readdir(directory, (err, files) => {
         if (err) {
             console.log("Error Reading Directory !", err);
@@ -70,7 +72,5 @@ cron.schedule('0 */12 * * *', () => {
     scheduled: true,
     timezone: 'Asia/Kolkata'
 });
-
-
 
 
