@@ -30,6 +30,9 @@ app.use('/api/files', require('./Routes/files'));
 app.use('/files', require('./Routes/show'));
 app.use('/files/download', require('./Routes/download'));
 
+app.get('/', (req, res) => {
+    res.send("Hello");
+});
 
 app.listen(PORT, () => {
     console.log(`Listening to Port: ${PORT}`)
