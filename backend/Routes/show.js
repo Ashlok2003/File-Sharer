@@ -28,7 +28,7 @@ router.post('/:uuid', async (req, res) => {
                         filename: file.filename,
                         filesize: file.size,
                         qr_code: url,
-                        download_url: `http://localhost:3000/files/download/${file.uuid}`,
+                        download_url: `${process.env.FILE_SHARER_APP_BASE_URL}/files/download/${file.uuid}`,
                     }));
 
                     /*
