@@ -7,10 +7,12 @@ router.get('/:uuid', async (req, res) => {
         const file = await File.findOne({ uuid: req.params.uuid });
 
         if (!file)
-            return res.render('FileNotFound');
+            return res.render('Error');
 
         const filePath = path.join(__dirname, '..', `${file.path}`);
         /* console.log(filePath) */
+
+        res.render('Download');
         res.download(filePath);
     }
     catch (error) {
